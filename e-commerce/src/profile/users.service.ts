@@ -13,11 +13,9 @@ export class UsersService {
         @InjectRepository(User)
         private usersRepository: Repository<User>,
     ) { }
-
     async findOne(id: number): Promise<User | null> {
         return this.usersRepository.findOne({ where: { id } });
     }
-
     async update(id: number, updateUserDto: Partial<User>): Promise<User> {
         const user = await this.usersRepository.findOne({ where: { id } });
         if (!user) {
